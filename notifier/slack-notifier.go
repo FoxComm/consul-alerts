@@ -57,8 +57,9 @@ func (slack *SlackNotifier) notifySimple(messages Messages) bool {
 	text := fmt.Sprintf(header, slack.ClusterName, overallStatus, fail, warn, pass)
 
 	for _, message := range messages {
-		text += fmt.Sprintf("\n%s:%s:%s is %s.", message.Node, message.Service, message.Check, message.Status)
-		text += fmt.Sprintf("\n%s", message.Output)
+		text += fmt.Sprintf("\nNode: %s, service: %s", message.Node, message.Service)
+		text += fmt.Sprintf("\n%s is %s.", message.Check, message.Status)
+		//text += fmt.Sprintf("\n%s", message.Output)
 	}
 
 	slack.Text = text

@@ -1,13 +1,13 @@
 package main
 
 import (
-	"time"
 	"math"
+	"time"
 
 	"net/http"
 
-	"github.com/AcalephStorage/consul-alerts/consul"
-	"github.com/AcalephStorage/consul-alerts/notifier"
+	"github.com/FoxComm/consul-alerts/consul"
+	"github.com/FoxComm/consul-alerts/notifier"
 
 	log "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/Sirupsen/logrus"
 )
@@ -62,7 +62,7 @@ func (c *CheckProcessor) reminderRun() {
 		durMins := int(math.Ceil(duration.Minutes()))
 		log.Println("Reminder message duration minutes: ", durMins)
 		if durMins >= message.Interval {
-			message.RmdCheck=time.Now()
+			message.RmdCheck = time.Now()
 			consulClient.SetReminder(message)
 			filteredMessages = append(filteredMessages, message)
 		}

@@ -10,7 +10,7 @@ import (
 
 	"encoding/json"
 
-	"github.com/AcalephStorage/consul-alerts/notifier"
+	"github.com/FoxComm/consul-alerts/notifier"
 
 	log "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/Sirupsen/logrus"
 	consulapi "github.com/AcalephStorage/consul-alerts/Godeps/_workspace/src/github.com/hashicorp/consul/api"
@@ -379,7 +379,7 @@ func (c *ConsulAlertClient) NewAlertsWithFilter(nodeName string, serviceName str
 		if len(statuses) > 0 {
 			inStatuses := false
 			for _, s := range statuses {
-				inStatuses =  check.Status == s
+				inStatuses = check.Status == s
 			}
 			if !inStatuses {
 				continue
@@ -387,9 +387,9 @@ func (c *ConsulAlertClient) NewAlertsWithFilter(nodeName string, serviceName str
 		}
 
 		if !ignoreBlacklist && c.IsBlacklisted(status.HealthCheck) {
-            continue
+			continue
 		}
-	    alerts = append(alerts, *status.HealthCheck)
+		alerts = append(alerts, *status.HealthCheck)
 	}
 	return alerts
 }
